@@ -10,6 +10,7 @@ public class MoneyMarket extends Account {
 	 */
 	public MoneyMarket(Profile holder, double balance, Date dateOpen) {
 		super(holder,balance,dateOpen);
+		withdrawals = 0;
 	}
 	
 	@Override
@@ -32,4 +33,19 @@ public class MoneyMarket extends Account {
 		return 12;
 	}
 	
+	/**
+	 * Sets the number of withdrawals
+	 * @param withdrawals
+	 */
+	public void setWithdrawals(int withdrawals) {
+		this.withdrawals = withdrawals;
+	}
+	
+	/**
+	 * Returns withdrawls
+	 * @return
+	 */
+	public int getWithdrawals() {
+		return withdrawals;
+	}
 }

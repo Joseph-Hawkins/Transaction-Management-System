@@ -51,11 +51,36 @@ public abstract class Account {
 	 */
 	public abstract double monthlyFee();
 	
+	/**
+	 * Getter method for balance.
+	 * @return
+	 */
+	
 	public double getBalance() {
 		return balance;
 	}
 	
+	/**
+	 * Setter method for balance
+	 * @param balance New balance for the account
+	 */
+	/*
 	public void setBalance(double balance) {
 		this.balance = balance;
+	}
+	*/
+	/**
+	 * Compares two accounts. Returns true if they are equal
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Account) {
+			Account item = (Account) obj; // Cast to account item
+			
+			if ( (this.holder.equals(item.holder)) && (this.balance == item.balance) && (this.dateOpen.equals(item.dateOpen)) ) {
+				return true;
+			}
+		}
+		return false;
 	}
 }
