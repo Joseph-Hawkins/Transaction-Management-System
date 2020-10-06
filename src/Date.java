@@ -7,7 +7,7 @@ public class Date implements Comparable<Date> {
 	 * Constructor class for date
 	 * @param year Year account was made
 	 * @param month Month account was made
-	 * @param day Day account was made
+	 * @param day Day account was made.
 	 */
 	public Date(int year, int month, int day) {
 		this.year = year;

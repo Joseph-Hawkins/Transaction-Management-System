@@ -126,6 +126,10 @@ public class AccountDatabase {
 		return 0;
 	}
 	
+	/**
+	 * Sorts the accounts by the date they were opened ascending
+	 * 
+	 */
 	private void sortByDateOpen() {
 		int n = accounts.length;
 		
@@ -133,10 +137,32 @@ public class AccountDatabase {
 			int earliest_date = i;
 			
 			for (int j = i+1; j < n; j++) {
-				//if ((accounts[j].getDate()).compareTo.(accounts[earliest_date].getDate()) == 1) {
-				//	System.out.println("");
-				//}
+				if ( (accounts[j].getDate() ).compareTo( accounts[earliest_date].getDate() ) < 0 ) {
+					earliest_date = j;
+				}
 			}
+			
+			Account temp = accounts[earliest_date];
+			accounts[earliest_date] = accounts[i];
+			accounts[i] = temp;
+		}
+	}
+	
+	private void sortByLastName() {
+		int n = accounts.length;
+		
+		for (int i = 0; i < n - 1; i++) {
+			/*
+			for (int j = i+1; j < n; j++) {
+				if ( (accounts[j].getDate() ).compareTo( accounts[earliest_date].getDate() ) < 0 ) {
+					earliest_date = j;
+				}
+			}
+			
+			Account temp = accounts[earliest_date];
+			accounts[earliest_date] = accounts[i];
+			accounts[i] = temp;
+			*/
 		}
 	}
 	
@@ -144,7 +170,7 @@ public class AccountDatabase {
 		Profile john_cena = new Profile("John","Cena");
 		Date open_date = new Date(2020,10,6);
 		
-		Account item = new Checking(john_cena,500.00,open_date,false);
+	    Checking item = new Checking(john_cena,500.00,open_date,false);
 		AccountDatabase database = new AccountDatabase();
 		database.add(item);
 		database.deposit(item,10000000.00);
@@ -152,10 +178,13 @@ public class AccountDatabase {
 		database.withdrawal(item,250.00);
 		database.withdrawal(item,250.00);
 		
-		Account temp = (Account) database[0];
+		Account temp = database.accounts[0];
+		//System.out.print(temp.getBalance());
 		//database[0].getDate();
 		//System.out.println(((MoneyMarket)item).getWithdrawals());
-		
-		System.out.println("I work");
+		System.out.println("Cena".compareTo("John")); //neg
+		System.out.println("John".compareTo("John")); //0
+		System.out.println("John".compareTo("Cena")); //pos
+		//System.out.println("I work");
 	}
 }
