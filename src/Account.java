@@ -83,4 +83,12 @@ public abstract class Account {
 		}
 		return false;
 	}
+	
+	/**
+	 * Gets openDate
+	 * @return returns openDate
+	 */
+	public Date getDate() {
+		return dateOpen;
+	}
 }

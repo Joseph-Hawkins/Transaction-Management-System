@@ -20,10 +20,10 @@ public class AccountDatabase {
 		
 		for(int i = 0; i < size; i++) {
 			if( accounts[i].equals(account) ) {
-				return i;
+				return i; //Found
 			}
 		}
-		return -1;
+		return -1; //Not found
 	}
 	
 	/**
@@ -46,7 +46,7 @@ public class AccountDatabase {
 	 */
 	public boolean add(Account item) {
 		
-		if ( find(item) == 1 ) {
+		if ( find(item) != -1 ) { //Has to be the first of its kind
 			return false;
 		}
 		
@@ -126,7 +126,19 @@ public class AccountDatabase {
 		return 0;
 	}
 	
-	
+	private void sortByDateOpen() {
+		int n = accounts.length;
+		
+		for (int i = 0; i < n - 1; i++) {
+			int earliest_date = i;
+			
+			for (int j = i+1; j < n; j++) {
+				//if ((accounts[j].getDate()).compareTo.(accounts[earliest_date].getDate()) == 1) {
+				//	System.out.println("");
+				//}
+			}
+		}
+	}
 	
 	public static void main (String[] args) {
 		Profile john_cena = new Profile("John","Cena");
@@ -139,6 +151,9 @@ public class AccountDatabase {
 		database.withdrawal(item,250.00);
 		database.withdrawal(item,250.00);
 		database.withdrawal(item,250.00);
+		
+		Account temp = (Account) database[0];
+		//database[0].getDate();
 		//System.out.println(((MoneyMarket)item).getWithdrawals());
 		
 		System.out.println("I work");
