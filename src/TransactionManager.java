@@ -7,8 +7,8 @@ public class TransactionManager {
 
 	/**
 	 * handle improper commands with try, catch blocks
-	 * case sesnsitive 2 letters
-	 * use InputMismatchException or NumberFormatException
+	 * case sensitive 2 letters
+	 * use InputMismatchException or NumberFormatException for improper data types
 	 * 
 	 *  What happens when improper input is used? do we prompt for a new valid input?
 	 */

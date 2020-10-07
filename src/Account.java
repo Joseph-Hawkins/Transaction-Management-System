@@ -44,7 +44,7 @@ public abstract class Account {
 	public String toString() {
 		String full_name = holder.getFname() + " " + holder.getLname();
 		String balance_to_string = "$" + String.valueOf(balance);
-		String date_to_string = dateOpen.toStrig();
+		String date_to_string = dateOpen.toString();
 		
 		return full_name + "*" + 
 	}
