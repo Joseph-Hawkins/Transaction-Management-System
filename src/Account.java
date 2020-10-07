@@ -1,3 +1,8 @@
+/**
+ * This is an abstract class that defines the common features of all account types.
+ * @author Joseph Hawkins, Gustavo Garcia
+ *
+ */
 public abstract class Account {
 	private Profile holder;
 	private double balance;
@@ -32,7 +37,8 @@ public abstract class Account {
 	}
 	
 	/**
-	 * Formats the account information
+	 * Formats the account information into a string
+	 * @return string of account data
 	 */
 	@Override
 	public String toString() {
@@ -50,7 +56,7 @@ public abstract class Account {
 	
 	/**
 	 * Returns the monthly fee of the account
-	 * @return
+	 * @return monthlyFee 
 	 */
 	public abstract double monthlyFee();
 	
@@ -72,6 +78,7 @@ public abstract class Account {
 		this.balance = balance;
 	}
 	*/
+	
 	/**
 	 * Compares two accounts. Returns true if they are equal
 	 */
@@ -88,13 +95,17 @@ public abstract class Account {
 	}
 	
 	/**
-	 * Gets openDate
-	 * @return returns openDate
+	 * Gets date account was opened.
+	 * @return openDate the date when account was opened.
 	 */
 	public Date getDate() {
 		return dateOpen;
 	}
 	
+	/**
+	 * Gets the profile of the account holder.
+	 * @return profile this is info about the account holder.
+	 */
 	public Profile getHolder() {
 		return holder;
 	}

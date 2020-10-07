@@ -1,4 +1,10 @@
-
+/**
+ * This is an array-based container class. 
+ * The array holds different instances in Checking, Savings, MoneyMarket
+ * 
+ * @author Joseph Hawkins, Gustavo Garcia
+ *
+ */
 public class AccountDatabase {
 	private Account[] accounts;
 	private int size;
@@ -127,7 +133,7 @@ public class AccountDatabase {
 	}
 	
 	/**
-	 * Sorts the accounts by the date they were opened ascending
+	 * Sorts the accounts by the date they were opened in ascending order.
 	 * 
 	 */
 	private void sortByDateOpen() {
@@ -156,8 +162,9 @@ public class AccountDatabase {
 		
 		for (int i = 0; i < n - 1; i++) {
 			int earliest_name = i;
-			for (int j = i+1; j < n; j++) {
-				if ( (accounts[j].getHolder().getLname() ).compareTo( accounts[earliest_name].getHolder().getLname() ) < 0 ) {
+			for (int j = i + 1; j < n; j++) {
+				if ( (accounts[j].getHolder().getLname() )
+						.compareTo( accounts[earliest_name].getHolder().getLname() ) < 0 ) {
 					earliest_name = j;
 				}
 			}
