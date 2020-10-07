@@ -183,23 +183,47 @@ public class AccountDatabase {
 		sortByDateOpen();
 		int n = accounts.length;
 		for (int i = 0; i < n; i++) {
-			String temp = accounts[i].toString();
+			String account_info = accounts[i].toString();
 			double monthly_interest = 0;
 			double monthly_fee = 0;
+			String output = "";
+			
 			if ( accounts[i] instanceof MoneyMarket ) {
 				MoneyMarket item = (MoneyMarket) accounts[i];
 				monthly_interest = item.monthlyInterest();
 				monthly_fee = item.monthlyFee();
+				int withdrawals = item.getWithdrawals(); 
+				output = "*Money Market*" + account_info;
+				
+				if (withdrawals == 1) {
+					output = output + "*1 withdrawal*";
+				} else {
+					output = output + "*" + Integer.toString(withdrawals) + " withdrawals*";
+				}
+				
 			}
+			
 			if ( accounts[i] instanceof Checking ) {
 				Checking item = (Checking) accounts[i];
 				monthly_interest = item.monthlyInterest();
 				monthly_fee = item.monthlyFee();
+				boolean direct_deposit_status = item.getDirectDeposit();
+				output = "*Checking*" + account_info;
+				
+				if (direct_deposit_status == true) {
+					output = output + "*direct deposit account*";
+				}
+				
 			}
+			
 			if ( accounts[i] instanceof Savings ) {
 				Savings item = (Savings) accounts[i];
 				monthly_interest = item.monthlyInterest();
 				monthly_fee = item.monthlyFee();
+				output = "*Savings*" + account_info;
+				if (item.getLoyalty() == true) {
+					output = output + "*special savings account*";
+				}
 			}
 			
 		}
