@@ -1,3 +1,8 @@
+/**
+ * This is an abstract class that defines the common features of all account types.
+ * @author Joseph Hawkins, Gustavo Garcia
+ *
+ */
 public abstract class Account {
 	private Profile holder;
 	private double balance;
@@ -47,7 +52,7 @@ public abstract class Account {
 	
 	/**
 	 * Returns the monthly fee of the account
-	 * @return
+	 * @return monthlyFee 
 	 */
 	public abstract double monthlyFee();
 	
@@ -69,6 +74,7 @@ public abstract class Account {
 		this.balance = balance;
 	}
 	*/
+	
 	/**
 	 * Compares two accounts. Returns true if they are equal
 	 */

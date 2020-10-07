@@ -1,4 +1,8 @@
-
+/**
+ * Savings account, subclass of Account.
+ * @author Joseph Hawkins, Gustavo Garcia
+ *
+ */
 public class Savings extends Account {
 	private boolean isLoyal;
 	
@@ -14,10 +18,11 @@ public class Savings extends Account {
 		this.isLoyal = isLoyal;
 	}
 	
-	@Override
+	
 	/**
 	 * Returns the total monthly interest for the account
 	 */
+	@Override
 	public double monthlyInterest() {
 		double monthly_interest_rate = 0;
 		if ( this.isLoyal == true ) {	
@@ -28,10 +33,11 @@ public class Savings extends Account {
 		return monthly_interest_rate * getBalance();
 	}
 	
-	@Override
+	
 	/**
 	 * Returns the monthly fee for the account
 	 */
+	@Override
 	public double monthlyFee() {
 		if ( getBalance() >= 300 ) {
 			return 0;

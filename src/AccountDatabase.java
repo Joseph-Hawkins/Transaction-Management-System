@@ -1,4 +1,10 @@
-
+/**
+ * This is an array-based container class. 
+ * The array holds different instances in Checking, Savings, MoneyMarket
+ * 
+ * @author Joseph Hawkins, Gustavo Garcia
+ *
+ */
 public class AccountDatabase {
 	private Account[] accounts;
 	private int size;

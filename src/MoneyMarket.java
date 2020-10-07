@@ -1,4 +1,8 @@
-
+/**
+ * This is a specific type of .
+ * @author Joseph Hawkins, Gustavo Garcia
+ *
+ */
 public class MoneyMarket extends Account {
 	private int withdrawals;
 	
@@ -13,19 +17,19 @@ public class MoneyMarket extends Account {
 		withdrawals = 0;
 	}
 	
-	@Override
 	/**
 	 * Returns the total monthly interest for the account
 	 */
+	@Override
 	public double monthlyInterest() {
 		double monthly_interest_rate = 0.65 / 12;
 		return monthly_interest_rate * getBalance();
 	}
 	
-	@Override
 	/**
 	 * Returns the monthly fee for the account
 	 */
+	@Override
 	public double monthlyFee() {
 		if ( getBalance() >= 2500 && withdrawals <= 6) {
 			return 0;
@@ -42,8 +46,8 @@ public class MoneyMarket extends Account {
 	}
 	
 	/**
-	 * Returns withdrawls
-	 * @return
+	 * Returns withdrawals
+	 * @return withdrawals This 
 	 */
 	public int getWithdrawals() {
 		return withdrawals;

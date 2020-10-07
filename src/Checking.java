@@ -1,9 +1,14 @@
-
+/**
+ * Subclass of account for a Checking Account.
+ * 
+ * @author Joseph Hawkins, Gustavo Garcia
+ *
+ */
 public class Checking extends Account {
 	private boolean directDeposit;
 	
 	/**
-	 * Initializes a Checking account
+	 * Initializes a Checking account object.
 	 * @param holder holder of the account
 	 * @param balance Balance of the account
 	 * @param dateOpen Date the account was opened
@@ -13,23 +18,30 @@ public class Checking extends Account {
 		super(holder,balance,dateOpen);
 		this.directDeposit = directDeposit;
 	}
-	@Override
+	
+	
 	/**
-	 * Returns the total monthly interest for the account
+	 * Calculates the monthly interest for the checking account.
+	 * 
+	 * @return monthlyInterest total monthly interest for the account
 	 */
+	@Override
 	public double monthlyInterest() {
 		double monthly_interest_rate = 0.05 / 12;
 		return monthly_interest_rate * getBalance();
 	}
 	
-	@Override
 	/**
-	 * Returns the monthly fee for the account
+	 * Calculates the monthly fee for the checking account.
+	 * @return monthlyFee The monthly fee for the account.
 	 */
+	@Override
 	public double monthlyFee() {
 		if ( getBalance() >= 1500 || directDeposit == true) {
 			return 0;
 		}
+		
 		return 25;
 	}
+	
 }

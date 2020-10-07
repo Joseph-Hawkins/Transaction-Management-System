@@ -1,3 +1,8 @@
+/**
+ * Date encapsulates year, month, day integer data fields.
+ * @author Joseph Hawkins, Gustavo Garcia
+ *
+ */
 public class Date implements Comparable<Date> {
 	private int year;
 	private int month;
@@ -15,6 +20,11 @@ public class Date implements Comparable<Date> {
 		this.day = day;
 	}
 
+	/**
+	 * Compares two dates.
+	 * @param o Date object 
+	 * @return 
+	 */
 	@Override
 	public int compareTo(Date o) {
 		if ( this.year > o.year ) {
