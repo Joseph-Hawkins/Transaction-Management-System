@@ -133,7 +133,7 @@ public class AccountDatabase {
 	}
 	
 	/**
-	 * Sorts the accounts by the date they were opened ascending
+	 * Sorts the accounts by the date they were opened in ascending order.
 	 * 
 	 */
 	private void sortByDateOpen() {
