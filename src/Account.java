@@ -91,4 +91,8 @@ public abstract class Account {
 	public Date getDate() {
 		return dateOpen;
 	}
+	
+	public Profile getHolder() {
+		return holder;
+	}
 }
