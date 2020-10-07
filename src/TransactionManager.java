@@ -18,10 +18,11 @@ public class TransactionManager {
 	 */
 	public void run() {
 		System.out.println("Transaction processing starts.....");
+		
+		System.out.println("Transaction processing completed.");
 	}
 	
 	public static void main(String[] args) {
-		System.out.println("User Interface Class");
 	}
 
 }
