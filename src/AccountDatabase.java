@@ -244,7 +244,9 @@ public class AccountDatabase {
 		System.out.print("--end of printing--");
 	}
 	
-	
+	/**
+	 * Prints accounts sorted by last name
+	 */
 	public void printByLastName() {
 		sortByLastName();
 		System.out.print("--Printing statements by last name--");
@@ -310,6 +312,9 @@ public class AccountDatabase {
 		System.out.print("--end of printing--");
 	}
 	
+	/**
+	 * Prints all the accounts
+	 */
 	public void printAccounts() {
 		System.out.println("--Listing accounts in the database--");
 		for (int i = 0; i < size; i++) {
