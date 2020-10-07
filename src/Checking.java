@@ -44,4 +44,11 @@ public class Checking extends Account {
 		return 25;
 	}
 	
+	/**
+	 * Getter for if an account has direct deposit
+	 * @return true if account has direct deposit, false otherwise.
+	 */
+	public boolean getDirectDeposit() {
+		return directDeposit;
+	}
 }
