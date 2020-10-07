@@ -162,8 +162,9 @@ public class AccountDatabase {
 		
 		for (int i = 0; i < n - 1; i++) {
 			int earliest_name = i;
-			for (int j = i+1; j < n; j++) {
-				if ( (accounts[j].getHolder().getLname() ).compareTo( accounts[earliest_name].getHolder().getLname() ) < 0 ) {
+			for (int j = i + 1; j < n; j++) {
+				if ( (accounts[j].getHolder().getLname() )
+						.compareTo( accounts[earliest_name].getHolder().getLname() ) < 0 ) {
 					earliest_name = j;
 				}
 			}

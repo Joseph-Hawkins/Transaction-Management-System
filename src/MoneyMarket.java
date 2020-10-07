@@ -1,5 +1,5 @@
 /**
- * This is a specific type of .
+ * This is a specific type of Account.
  * @author Joseph Hawkins, Gustavo Garcia
  *
  */
@@ -46,8 +46,8 @@ public class MoneyMarket extends Account {
 	}
 	
 	/**
-	 * Returns withdrawals
-	 * @return withdrawals This 
+	 * Returns number of withdrawals
+	 * @return withdrawals Number of withdrawals made.
 	 */
 	public int getWithdrawals() {
 		return withdrawals;

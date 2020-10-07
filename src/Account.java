@@ -36,10 +36,11 @@ public abstract class Account {
 		this.balance = this.balance + amount;
 	}
 	
-	@Override
 	/**
-	 * Formats the account information
+	 * Formats the account information into a string
+	 * @return string of account data
 	 */
+	@Override
 	public String toString() {
 		return "";
 	}
@@ -91,13 +92,17 @@ public abstract class Account {
 	}
 	
 	/**
-	 * Gets openDate
-	 * @return returns openDate
+	 * Gets date account was opened.
+	 * @return openDate the date when account was opened.
 	 */
 	public Date getDate() {
 		return dateOpen;
 	}
 	
+	/**
+	 * Gets the profile of the account holder.
+	 * @return profile this is info about the account holder.
+	 */
 	public Profile getHolder() {
 		return holder;
 	}
