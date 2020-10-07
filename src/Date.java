@@ -8,6 +8,20 @@ public class Date implements Comparable<Date> {
 	private int month;
 	private int day;
 	
+	static int MAX_VALID_YEAR = 9999;
+	static int MIN_VALID_YEAR = 1000;
+	
+	/**
+	 * Checks if a year is a leap year
+	 * @param year Integer value of the year.
+	 * @return true if year is a leap year, false otherwise.
+	 */
+	static boolean isLeapYear(int year) {
+		return (((year % 4 == 0) && 
+				 (year % 100 != 0)) ||
+				 (year % 400 == 0));
+	}
+
 	/**
 	 * Constructor class for date
 	 * @param year Year account was made
@@ -77,16 +91,41 @@ public class Date implements Comparable<Date> {
 	 */
 	public boolean isValid() {
 		
+		if(year > MAX_VALID_YEAR || 
+			year < MIN_VALID_YEAR) {
+			return false;
+		}
+		
+		if(month > 12 || month < 1) {
+			return false;
+		}
+		
+		if(day > 31 || day < 1) {
+			return false;
+		}
+		
+		//Handle February with and without leap year.
+		if(month == 2) {
+			if(isLeapYear(year)) {
+				return (day <= 29);
+			}
+			else {
+				return (day <= 28);
+			}
+		}
+		
+		if(month ==  4 || month == 6 || month == 9 || month == 11) {
+			return (day <= 30);
+		}
 		return true;
 	}
 	
 	
 	public static void main (String[] args) {
-		Date date1 = new Date(2002, 10, 24);
-		
+		Date date1 = new Date(2001, 13, 24);
 		Date date2 = new Date(2020, 9, 24);
 
-		System.out.println(date1.compareTo(date2));
+		System.out.println(date1.isValid());
 		
 		
 	}
