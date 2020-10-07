@@ -44,4 +44,12 @@ public class Savings extends Account {
 		}
 		return 5;
 	}
+	
+	/**
+	 * Getter method for isLoyal
+	 * @return
+	 */
+	public boolean getLoyalty() {
+		return isLoyal;
+	}
 }

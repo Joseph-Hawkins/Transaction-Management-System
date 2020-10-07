@@ -184,48 +184,59 @@ public class AccountDatabase {
 		int n = accounts.length;
 		for (int i = 0; i < n; i++) {
 			String account_info = accounts[i].toString();
-			double monthly_interest = 0;
-			double monthly_fee = 0;
-			String output = "";
+			String header = "";
+			String interest = "";
+			String fee = "";
+			String new_balance = "";
 			
 			if ( accounts[i] instanceof MoneyMarket ) {
-				MoneyMarket item = (MoneyMarket) accounts[i];
-				monthly_interest = item.monthlyInterest();
-				monthly_fee = item.monthlyFee();
-				int withdrawals = item.getWithdrawals(); 
-				output = "*Money Market*" + account_info;
+				MoneyMarket item = (MoneyMarket) accounts[i]; 
+				header = "*Money Market*" + account_info;
 				
-				if (withdrawals == 1) {
-					output = output + "*1 withdrawal*";
+				if (item.getWithdrawals() == 1) {
+					header = header + "*1 withdrawal*";
 				} else {
-					output = output + "*" + Integer.toString(withdrawals) + " withdrawals*";
+					header = header + "*" + Integer.toString(item.getWithdrawals()) + " withdrawals*";
 				}
+				
+				interest = "-interest: $ " + String.format("%.2f", item.monthlyInterest());
+				fee = "-fee: $ " + String.format("%.2f", item.monthlyFee());
+				accounts[i].debit(item.monthlyInterest() + item.monthlyFee());
+				new_balance = "-new balance: $ " + String.format("%.2f", accounts[i].getBalance());
 				
 			}
 			
 			if ( accounts[i] instanceof Checking ) {
 				Checking item = (Checking) accounts[i];
-				monthly_interest = item.monthlyInterest();
-				monthly_fee = item.monthlyFee();
-				boolean direct_deposit_status = item.getDirectDeposit();
-				output = "*Checking*" + account_info;
+				header = "*Checking*" + account_info;
 				
-				if (direct_deposit_status == true) {
-					output = output + "*direct deposit account*";
+				if (item.getDirectDeposit() == true) {
+					header = header + "*direct deposit account*";
 				}
+				interest = "-interest: $ " + String.format("%.2f", item.monthlyInterest());
+				fee = "-fee: $ " + String.format("%.2f", item.monthlyFee());
+				accounts[i].debit(item.monthlyInterest() + item.monthlyFee());
+				new_balance = "-new balance: $ " + String.format("%.2f", accounts[i].getBalance());
 				
 			}
 			
 			if ( accounts[i] instanceof Savings ) {
 				Savings item = (Savings) accounts[i];
-				monthly_interest = item.monthlyInterest();
-				monthly_fee = item.monthlyFee();
-				output = "*Savings*" + account_info;
+				header = "*Savings*" + account_info;
 				if (item.getLoyalty() == true) {
-					output = output + "*special savings account*";
+					header = header + "*special savings account*";
 				}
+				
+				interest = "-interest: $ " + String.format("%.2f", item.monthlyInterest());
+				fee = "-fee: $ " + String.format("%.2f", item.monthlyFee());
+				accounts[i].credit(item.monthlyInterest());
+				new_balance = "-new balance: $ " + String.format("%.2f", accounts[i].getBalance());
 			}
 			
+			System.out.println(header);
+			System.out.println(interest);
+			System.out.println(fee);
+			System.out.print(new_balance);
 		}
 	}
 	public static void main (String[] args) {
@@ -240,7 +251,7 @@ public class AccountDatabase {
 		database.withdrawal(item,250.00);
 		database.withdrawal(item,250.00);
 		
-		Account temp = database.accounts[0];
+		
 		//System.out.print(temp.getBalance());
 		//database[0].getDate();
 		//System.out.println(((MoneyMarket)item).getWithdrawals());
