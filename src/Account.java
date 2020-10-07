@@ -46,7 +46,7 @@ public abstract class Account {
 		String balance_to_string = "$" + String.valueOf(balance);
 		String date_to_string = dateOpen.toString();
 		
-		return full_name + "*" + 
+		return full_name + "* " + balance_to_string + "*" + date_to_string;  
 	}
 	/**
 	 * Calculates the monthly interest of the account
