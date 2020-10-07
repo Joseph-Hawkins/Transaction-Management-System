@@ -137,7 +137,7 @@ public class AccountDatabase {
 	 * 
 	 */
 	private void sortByDateOpen() {
-		int n = accounts.length;
+		int n = size;
 		
 		for (int i = 0; i < n - 1; i++) {
 			int earliest_date = i;
@@ -158,7 +158,7 @@ public class AccountDatabase {
 	 * Sorts accounts by the last name
 	 */
 	private void sortByLastName() {
-		int n = accounts.length;
+		int n = size;
 		
 		for (int i = 0; i < n - 1; i++) {
 			int earliest_name = i;
@@ -181,8 +181,8 @@ public class AccountDatabase {
 	 */
 	public void printByDateOpen() {
 		sortByDateOpen();
-		int n = accounts.length;
-		for (int i = 0; i < n; i++) {
+		System.out.print("--Printing statements by date opened--");
+		for (int i = 0; i < size; i++) {
 			String account_info = accounts[i].toString();
 			String header = "";
 			String interest = "";
@@ -213,6 +213,7 @@ public class AccountDatabase {
 				if (item.getDirectDeposit() == true) {
 					header = header + "*direct deposit account*";
 				}
+				
 				interest = "-interest: $ " + String.format("%.2f", item.monthlyInterest());
 				fee = "-fee: $ " + String.format("%.2f", item.monthlyFee());
 				accounts[i].debit(item.monthlyInterest() + item.monthlyFee());
@@ -223,8 +224,9 @@ public class AccountDatabase {
 			if ( accounts[i] instanceof Savings ) {
 				Savings item = (Savings) accounts[i];
 				header = "*Savings*" + account_info;
+				
 				if (item.getLoyalty() == true) {
-					header = header + "*special savings account*";
+					header = header + "*special Savings account*";
 				}
 				
 				interest = "-interest: $ " + String.format("%.2f", item.monthlyInterest());
@@ -232,32 +234,138 @@ public class AccountDatabase {
 				accounts[i].credit(item.monthlyInterest());
 				new_balance = "-new balance: $ " + String.format("%.2f", accounts[i].getBalance());
 			}
-			
+			System.out.println('\n');
 			System.out.println(header);
 			System.out.println(interest);
 			System.out.println(fee);
 			System.out.print(new_balance);
 		}
+		System.out.println("");
+		System.out.print("--end of printing--");
 	}
+	
+	
+	public void printByLastName() {
+		sortByLastName();
+		System.out.print("--Printing statements by last name--");
+		for (int i = 0; i < size; i++) {
+			String account_info = accounts[i].toString();
+			String header = "";
+			String interest = "";
+			String fee = "";
+			String new_balance = "";
+			
+			if ( accounts[i] instanceof MoneyMarket ) {
+				MoneyMarket item = (MoneyMarket) accounts[i]; 
+				header = "*Money Market*" + account_info;
+				
+				if (item.getWithdrawals() == 1) {
+					header = header + "*1 withdrawal*";
+				} else {
+					header = header + "*" + Integer.toString(item.getWithdrawals()) + " withdrawals*";
+				}
+				
+				interest = "-interest: $ " + String.format("%.2f", item.monthlyInterest());
+				fee = "-fee: $ " + String.format("%.2f", item.monthlyFee());
+				accounts[i].debit(item.monthlyInterest() + item.monthlyFee());
+				new_balance = "-new balance: $ " + String.format("%.2f", accounts[i].getBalance());
+				
+			}
+			
+			if ( accounts[i] instanceof Checking ) {
+				Checking item = (Checking) accounts[i];
+				header = "*Checking*" + account_info;
+				
+				if (item.getDirectDeposit() == true) {
+					header = header + "*direct deposit account*";
+				}
+				
+				interest = "-interest: $ " + String.format("%.2f", item.monthlyInterest());
+				fee = "-fee: $ " + String.format("%.2f", item.monthlyFee());
+				accounts[i].debit(item.monthlyInterest() + item.monthlyFee());
+				new_balance = "-new balance: $ " + String.format("%.2f", accounts[i].getBalance());
+				
+			}
+			
+			if ( accounts[i] instanceof Savings ) {
+				Savings item = (Savings) accounts[i];
+				header = "*Savings*" + account_info;
+				
+				if (item.getLoyalty() == true) {
+					header = header + "*special Savings account*";
+				}
+				
+				interest = "-interest: $ " + String.format("%.2f", item.monthlyInterest());
+				fee = "-fee: $ " + String.format("%.2f", item.monthlyFee());
+				accounts[i].credit(item.monthlyInterest());
+				new_balance = "-new balance: $ " + String.format("%.2f", accounts[i].getBalance());
+			}
+			System.out.println('\n');
+			System.out.println(header);
+			System.out.println(interest);
+			System.out.println(fee);
+			System.out.print(new_balance);
+		}
+		System.out.println("");
+		System.out.print("--end of printing--");
+	}
+	
+	public void printAccounts() {
+		System.out.println("--Listing accounts in the database--");
+		for (int i = 0; i < size; i++) {
+			
+			if ( accounts[i] instanceof Checking ) {
+				Checking item = (Checking) accounts[i];
+				System.out.print("*Checking*" + accounts[i].toString());
+				if (item.getDirectDeposit() == true) {
+					System.out.print("*direct deposit account*");
+				}
+				System.out.println("");
+			}
+			
+			if ( accounts[i] instanceof Savings ) {
+				Savings item = (Savings) accounts[i];
+				System.out.print("*Savings*" + accounts[i].toString());
+				if (item.getLoyalty() == true) {
+					System.out.print("*special Savings accounts*");
+				} 	
+				System.out.println("");
+			}
+			
+			if ( accounts[i] instanceof MoneyMarket ) {
+				MoneyMarket item = (MoneyMarket) accounts[i];
+				System.out.print("*Money Market*" + accounts[i].toString());
+				if (item.getWithdrawals() == 1) {
+					System.out.print("*1 withdrawal*");
+				} else {
+					System.out.print("*" + Integer.toString(item.getWithdrawals()) + " withdrawals*");
+				}
+				System.out.println("");
+			}
+		}
+		System.out.print("--end of listing--");
+	}
+	
+
 	public static void main (String[] args) {
+		
 		Profile john_cena = new Profile("John","Cena");
-		Date open_date = new Date(2020,10,6);
+		Profile jeff_hardy = new Profile("Jeff","Hardy");
+		Profile randy_orton = new Profile("Randy","Orton");
+		Date open_date = new Date(2018,10,9);
+		Date open_date2 = new Date(2000,10,7);
+		Date open_date3 = new Date(2020,10,8);
 		
 	    Checking item = new Checking(john_cena,500.00,open_date,false);
+	    Savings item2 = new Savings(jeff_hardy,200.00,open_date2,true);
+	    MoneyMarket item3 = new MoneyMarket(randy_orton,700.00,open_date3);
 		AccountDatabase database = new AccountDatabase();
 		database.add(item);
-		database.deposit(item,10000000.00);
-		database.withdrawal(item,250.00);
-		database.withdrawal(item,250.00);
-		database.withdrawal(item,250.00);
+		database.add(item2);
+		database.add(item3);
 		
+
 		
-		//System.out.print(temp.getBalance());
-		//database[0].getDate();
-		//System.out.println(((MoneyMarket)item).getWithdrawals());
-		System.out.println("Cena".compareTo("John")); //neg
-		System.out.println("John".compareTo("John")); //0
-		System.out.println("John".compareTo("Cena")); //pos
-		//System.out.println("I work");
+        database.printAccounts();
 	}
 }
