@@ -1,18 +1,23 @@
-/**
- * This class holds the first and last name of a customer.
- * @author Joseph Hawkins, Gustavo Garcia
- *
- */
 public class Profile {
 	private String fname;
 	private String lname;
 	
 	/**
-	 * Initializes a profile object with first and last name. 
+	 * Initializes profile
+	 * @param fname first name of the user
+	 * @param lname last name of the user
 	 */
 	public Profile(String fname, String lname) {
 		this.fname = fname;
 		this.lname = lname;
 	}
-
+	
+	/**
+	 * Getter method for last name
+	 * @return
+	 */
+	public String getLname() {
+		return lname;
+	}
+	
 }

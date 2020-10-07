@@ -154,21 +154,24 @@ public class AccountDatabase {
 		}
 	}
 	
+	/**
+	 * Sorts accounts by the last name
+	 */
 	private void sortByLastName() {
 		int n = accounts.length;
 		
 		for (int i = 0; i < n - 1; i++) {
-			/*
+			int earliest_name = i;
 			for (int j = i+1; j < n; j++) {
-				if ( (accounts[j].getDate() ).compareTo( accounts[earliest_date].getDate() ) < 0 ) {
-					earliest_date = j;
+				if ( (accounts[j].getHolder().getLname() ).compareTo( accounts[earliest_name].getHolder().getLname() ) < 0 ) {
+					earliest_name = j;
 				}
 			}
 			
-			Account temp = accounts[earliest_date];
-			accounts[earliest_date] = accounts[i];
+			Account temp = accounts[earliest_name];
+			accounts[earliest_name] = accounts[i];
 			accounts[i] = temp;
-			*/
+			
 		}
 	}
 	
