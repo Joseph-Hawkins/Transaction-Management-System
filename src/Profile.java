@@ -13,6 +13,13 @@ public class Profile {
 	}
 	
 	/**
+	 * Getter method for first name
+	 */
+	
+	public String getFname() {
+		return fname;
+	}
+	/**
 	 * Getter method for last name
 	 * @return
 	 */

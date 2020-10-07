@@ -169,6 +169,34 @@ public class AccountDatabase {
 		}
 	}
 	
+	/**
+	 * Sorts by the date they were opened. Then prints the accounts statements
+	 */
+	public void printByDateOpen() {
+		sortByDateOpen();
+		int n = accounts.length;
+		for (int i = 0; i < n; i++) {
+			String temp = accounts[i].toString();
+			double monthly_interest = 0;
+			double monthly_fee = 0;
+			if ( accounts[i] instanceof MoneyMarket ) {
+				MoneyMarket item = (MoneyMarket) accounts[i];
+				monthly_interest = item.monthlyInterest();
+				monthly_fee = item.monthlyFee();
+			}
+			if ( accounts[i] instanceof Checking ) {
+				Checking item = (Checking) accounts[i];
+				monthly_interest = item.monthlyInterest();
+				monthly_fee = item.monthlyFee();
+			}
+			if ( accounts[i] instanceof Savings ) {
+				Savings item = (Savings) accounts[i];
+				monthly_interest = item.monthlyInterest();
+				monthly_fee = item.monthlyFee();
+			}
+			
+		}
+	}
 	public static void main (String[] args) {
 		Profile john_cena = new Profile("John","Cena");
 		Date open_date = new Date(2020,10,6);

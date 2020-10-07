@@ -31,14 +31,17 @@ public abstract class Account {
 		this.balance = this.balance + amount;
 	}
 	
-	@Override
 	/**
 	 * Formats the account information
 	 */
+	@Override
 	public String toString() {
-		return "";
+		String full_name = holder.getFname() + " " + holder.getLname();
+		String balance_to_string = "$" + String.valueOf(balance);
+		String date_to_string = dateOpen.toStrig();
+		
+		return full_name + "*" + 
 	}
-	
 	/**
 	 * Calculates the monthly interest of the account
 	 * @return
