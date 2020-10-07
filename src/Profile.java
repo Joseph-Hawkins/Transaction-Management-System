@@ -1,3 +1,9 @@
+/**
+ * Class that encapsulates the customers first and last name.
+ * 
+ * @author Joseph Hawkins, Gustavo Garcia
+ *
+ */
 public class Profile {
 	private String fname;
 	private String lname;
@@ -14,14 +20,16 @@ public class Profile {
 	
 	/**
 	 * Getter method for first name
+	 * @return fname First name in string form.
 	 */
 	
 	public String getFname() {
 		return fname;
 	}
+	
 	/**
 	 * Getter method for last name
-	 * @return
+	 * @return lname Last name in string form.
 	 */
 	public String getLname() {
 		return lname;

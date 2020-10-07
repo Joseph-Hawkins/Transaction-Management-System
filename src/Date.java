@@ -27,6 +27,7 @@ public class Date implements Comparable<Date> {
 	 */
 	@Override
 	public int compareTo(Date date) {
+		
 		//different years
 		if ( this.year < date.year ) {
 			return -1;
@@ -75,6 +76,7 @@ public class Date implements Comparable<Date> {
 	 * @return true if date is valid, false otherwise.
 	 */
 	public boolean isValid() {
+		
 		return true;
 	}
 	

@@ -17,7 +17,7 @@ public class TransactionManager {
 	 * Main running method.
 	 */
 	public void run() {
-		System.out.println("TransactionManager running");
+		System.out.println("Transaction processing starts.....");
 	}
 	
 	public static void main(String[] args) {
