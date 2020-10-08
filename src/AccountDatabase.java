@@ -61,6 +61,7 @@ public class AccountDatabase {
 	/**
 	 * Adds a new account to the database.
 	 * @param item New account to be added
+	 * @return true if account adding was successful, false otherwise.
 	 */
 	public boolean add(Account item) {
 

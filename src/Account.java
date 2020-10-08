@@ -50,7 +50,7 @@ public abstract class Account {
 	}
 	/**
 	 * Calculates the monthly interest of the account
-	 * @return
+	 * @return interest monthly interest of an account
 	 */
 	public abstract double monthlyInterest();
 	
@@ -62,7 +62,7 @@ public abstract class Account {
 	
 	/**
 	 * Getter method for balance.
-	 * @return
+	 * @return balance Current balance of account.
 	 */
 	public double getBalance() {
 		return balance;
