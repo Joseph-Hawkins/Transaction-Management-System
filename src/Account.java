@@ -87,7 +87,9 @@ public abstract class Account {
 		if (obj instanceof Account) {
 			Account item = (Account)obj; // Cast to account item
 
-			if ( (this.holder == item.getHolder() ) && (this.balance == item.getBalance()) && (this.dateOpen.equals(item.dateOpen)) ) {
+			if ( (this.holder.equals(item.getHolder())) &&
+				 (this.balance == item.getBalance()) &&
+				 (this.dateOpen.equals(item.dateOpen)) ) {
 				return true;
 			}
 		}

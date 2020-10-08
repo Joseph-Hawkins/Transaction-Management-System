@@ -25,8 +25,20 @@ public class AccountDatabase {
 	private int find(Account account) {
 		
 		for(int i = 0; i < size; i++) {
+			
 			if( accounts[i].equals(account) ) {
-				return i; //Found
+				
+				if ( (accounts[i] instanceof Checking) && (account instanceof Checking )) {
+					return i;
+				}
+				
+				if ( (accounts[i] instanceof MoneyMarket) && (account instanceof MoneyMarket )) {
+					return i;
+				}
+				
+				if ( (accounts[i] instanceof Savings) && (account instanceof Savings )) {
+					return i;
+				}
 			}
 		}
 		return -1; //Not found
@@ -355,22 +367,22 @@ public class AccountDatabase {
 	public static void main (String[] args) {
 		
 		Profile john_cena = new Profile("John","Cena");
-		Profile jeff_hardy = new Profile("Jeff","Hardy");
+		Profile jeff_hardy = new Profile("John","Cena");
 		Profile randy_orton = new Profile("Randy","Orton");
 		Date open_date = new Date(2018,10,9);
 		Date open_date2 = new Date(2000,10,7);
 		Date open_date3 = new Date(2020,10,8);
 		
 	    Checking item = new Checking(john_cena,500.00,open_date,false);
-	    Savings item2 = new Savings(jeff_hardy,200.00,open_date2,true);
-	    MoneyMarket item3 = new MoneyMarket(randy_orton,700.00,open_date3);
+	    Savings item2 = new Savings(jeff_hardy,500.00,open_date,false);
+	    //MoneyMarket item3 = new MoneyMarket(randy_orton,700.00,open_date3);
 		AccountDatabase database = new AccountDatabase();
 		database.add(item);
-		database.add(item2);
-		database.add(item3);
+		//database.add(item2);
+		//database.add(item3);
 		
-
+		System.out.print(database.find(item));
 		
-        database.printAccounts();
+        //database.printAccounts();
 	}
 }

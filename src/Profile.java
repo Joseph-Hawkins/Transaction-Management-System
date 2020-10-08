@@ -35,4 +35,24 @@ public class Profile {
 		return lname;
 	}
 	
+	/**
+	 * Compares two Profile objects
+	 * @param obj Profile to be compared. 
+	 * @return Returns true if they are equal, false otherwise. 
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		
+		if ( obj instanceof Profile) {
+			
+			Profile item = (Profile) obj;
+			
+			if ( (this.fname.equals(item.getFname())) &&
+			     (this.lname.equals(item.getLname())) ) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 }
