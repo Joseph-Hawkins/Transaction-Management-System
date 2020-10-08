@@ -132,8 +132,8 @@ public class Date implements Comparable<Date> {
 			Date date = (Date) obj;
 			
 			if( (this.year == date.year) &&
-				 (this.month == date.month) &&
-				 (this.day == date.day)) {
+				(this.month == date.month) &&
+				(this.day == date.day)) {
 				return true;
 				
 			}
