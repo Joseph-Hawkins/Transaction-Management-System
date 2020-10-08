@@ -25,7 +25,7 @@ public class AccountDatabase {
 	private int find(Account account) {
 		
 		for(int i = 0; i < size; i++) {
-			if( accounts[i].equals(account) ) {
+			if( accounts[i].equals(account) && (account instanceof accounts[i])) {
 				return i; //Found
 			}
 		}
@@ -361,7 +361,14 @@ public class AccountDatabase {
 		Date open_date2 = new Date(2000,10,7);
 		Date open_date3 = new Date(2020,10,8);
 		
-	    Checking item = new Checking(john_cena,500.00,open_date,false);
+		
+		MoneyMarket item0 = new MoneyMarket(john_cena,500.00,open_date);
+		Savings item1 = new Savings(john_cena,500.00,open_date,false);
+		Checking item = new Checking(john_cena,500.00,open_date,false);
+	    
+		System.out.println(item0.equals(item1));
+		
+		
 	    Savings item2 = new Savings(jeff_hardy,200.00,open_date2,true);
 	    MoneyMarket item3 = new MoneyMarket(randy_orton,700.00,open_date3);
 		AccountDatabase database = new AccountDatabase();
@@ -371,6 +378,6 @@ public class AccountDatabase {
 		
 
 		
-        database.printAccounts();
+        //database.printAccounts();
 	}
 }

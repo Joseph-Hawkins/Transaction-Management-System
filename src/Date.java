@@ -125,6 +125,7 @@ public class Date implements Comparable<Date> {
 	 * @param obj is the date to be compared.
 	 * @return true if the dates are equal, false otherwise
 	 */
+	@Override
 	public boolean equals(Object obj) {
 		
 		if (obj instanceof Date) {
