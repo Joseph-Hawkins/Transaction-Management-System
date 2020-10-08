@@ -21,14 +21,15 @@ public class Savings extends Account {
 	
 	/**
 	 * Returns the total monthly interest for the account
+	 * @return interest Monthly interest for an account.
 	 */
 	@Override
 	public double monthlyInterest() {
 		double monthly_interest_rate = 0;
 		if ( this.isLoyal == true ) {	
-			monthly_interest_rate = 0.35 / 12;
+			monthly_interest_rate = 0.0035 / 12;
 		} else {
-			monthly_interest_rate = 0.25 / 12;
+			monthly_interest_rate = 0.0025 / 12;
 		}
 		return monthly_interest_rate * getBalance();
 	}
@@ -36,6 +37,7 @@ public class Savings extends Account {
 	
 	/**
 	 * Returns the monthly fee for the account
+	 * @return fee This is the monthly fee for the given account.
 	 */
 	@Override
 	public double monthlyFee() {
@@ -47,7 +49,7 @@ public class Savings extends Account {
 	
 	/**
 	 * Getter method for isLoyal
-	 * @return
+	 * @return true if customer is loyal, false otherwise.
 	 */
 	public boolean getLoyalty() {
 		return isLoyal;

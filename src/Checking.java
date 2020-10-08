@@ -27,7 +27,7 @@ public class Checking extends Account {
 	 */
 	@Override
 	public double monthlyInterest() {
-		double monthly_interest_rate = 0.05 / 12;
+		double monthly_interest_rate = 0.0005 / 12;
 		return monthly_interest_rate * getBalance();
 	}
 	

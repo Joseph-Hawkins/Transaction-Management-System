@@ -22,7 +22,7 @@ public class MoneyMarket extends Account {
 	 */
 	@Override
 	public double monthlyInterest() {
-		double monthly_interest_rate = 0.65 / 12;
+		double monthly_interest_rate = 0.0065 / 12;
 		return monthly_interest_rate * getBalance();
 	}
 	
@@ -39,7 +39,7 @@ public class MoneyMarket extends Account {
 	
 	/**
 	 * Sets the number of withdrawals
-	 * @param withdrawals
+	 * @param withdrawals Number of withdrawals for the given account.
 	 */
 	public void setWithdrawals(int withdrawals) {
 		this.withdrawals = withdrawals;
