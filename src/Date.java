@@ -120,13 +120,41 @@ public class Date implements Comparable<Date> {
 		return true;
 	}
 	
+	/**
+	 * Checks if a date is equal to another.
+	 * @param obj is the date to be compared.
+	 * @return true if the dates are equal, false otherwise
+	 */
+	public boolean equals(Object obj) {
+		
+		if (obj instanceof Date) {
+			Date date = (Date) obj;
+			
+			if( (this.year == date.year) &&
+				 (this.month == date.month) &&
+				 (this.day == date.day)) {
+				return true;
+				
+			}
+		
+		}
+		
+		return false;		
+	}
 	
 	public static void main (String[] args) {
-		Date date1 = new Date(2001, 13, 24);
-		Date date2 = new Date(2020, 9, 24);
+		Date date1 = new Date(2001, 3, 4);
+		Date date2 = new Date(2001, 3, 4);
+		Date date3 = new Date(2001, 3, 4);
 
-		System.out.println(date1.isValid());
-		
+		System.out.println(date1.equals(date2));
+		System.out.println(date2.equals(date1));
+
+		System.out.println(date1.equals(date3));
+		System.out.println(date3.equals(date2));
+		System.out.println(date3.equals(date3));
+
+
 		
 	}
 }

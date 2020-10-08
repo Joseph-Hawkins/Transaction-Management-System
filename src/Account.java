@@ -64,7 +64,6 @@ public abstract class Account {
 	 * Getter method for balance.
 	 * @return
 	 */
-	
 	public double getBalance() {
 		return balance;
 	}
@@ -80,14 +79,15 @@ public abstract class Account {
 	*/
 	
 	/**
-	 * Compares two accounts. Returns true if they are equal
+	 * Compares two accounts. 
+	 * @return true if they are equal, false otherwise.
 	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (obj instanceof Account) {
-			Account item = (Account) obj; // Cast to account item
-			
-			if ( (this.holder.equals(item.holder)) && (this.balance == item.balance) && (this.dateOpen.equals(item.dateOpen)) ) {
+			Account item = (Account)obj; // Cast to account item
+
+			if ( (this.holder == item.getHolder() ) && (this.balance == item.getBalance()) && (this.dateOpen.equals(item.dateOpen)) ) {
 				return true;
 			}
 		}
@@ -108,5 +108,29 @@ public abstract class Account {
 	 */
 	public Profile getHolder() {
 		return holder;
+	}
+	
+	public static void main (String[] args) {
+	
+		/*
+		 * 
+		 * 			if ( obj instanceof MoneyMarket ) {
+				MoneyMarket item = (MoneyMarket) obj;
+			}
+			
+			else if ( obj instanceof Checking ) {
+				Checking item = (Checking) obj;
+			}
+			
+			else if ( obj instanceof Savings ) {
+				Savings item = (Savings) obj;
+			}
+			else {
+				return false;
+			}
+				
+			
+		 */
+	
 	}
 }
