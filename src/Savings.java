@@ -26,9 +26,9 @@ public class Savings extends Account {
 	public double monthlyInterest() {
 		double monthly_interest_rate = 0;
 		if ( this.isLoyal == true ) {	
-			monthly_interest_rate = 0.35 / 12;
+			monthly_interest_rate = 0.0035 / 12;
 		} else {
-			monthly_interest_rate = 0.25 / 12;
+			monthly_interest_rate = 0.0025 / 12;
 		}
 		return monthly_interest_rate * getBalance();
 	}

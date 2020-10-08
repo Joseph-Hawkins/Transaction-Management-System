@@ -35,6 +35,16 @@ public class Date implements Comparable<Date> {
 	}
 
 	/**
+	 * String constructor
+	 * @param date string format of a date mm/dd/yyyy
+	 */
+	public Date(String date) {
+		this.month = Integer.parseInt(date.split("/")[0]);
+		this.day = Integer.parseInt(date.split("/")[1]);
+		this.year = Integer.parseInt(date.split("/")[2]);
+	}
+	
+	/**
 	 * Compares two dates.
 	 * @param date This is an object that encapsulates month/day/year 
 	 * @return -1 if this.date comes before date, 0 if same date, 1 if this.date comes after date.
@@ -154,6 +164,9 @@ public class Date implements Comparable<Date> {
 		System.out.println(date1.equals(date3));
 		System.out.println(date3.equals(date2));
 		System.out.println(date3.equals(date3));
+		
+		Date date4 = new Date("1/02/1995");
+		System.out.println(date4.toString());
 
 
 		

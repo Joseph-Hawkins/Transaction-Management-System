@@ -10,7 +10,7 @@ public class AccountDatabase {
 	private int size;
 
 	/**
-	 * Constructor for AccountDatabase, initilizes to size 5
+	 * Constructor for AccountDatabase, initializes to size 5
 	 */
 	public AccountDatabase() {
 		this.accounts = new Account [5];
@@ -68,12 +68,14 @@ public class AccountDatabase {
 			return false;
 		}
 
+		if(!item.getDate().isValid()) {
+			throw new NumberFormatException("Date is not valid.");
+		}
+		
 		if( size < accounts.length ) {
 			accounts[size] = item;
 			size++;
-			System.out.println("Account opened and added to the database.");
 		} else {
-
 			grow();
 			add(item);
 		}
@@ -112,7 +114,7 @@ public class AccountDatabase {
 			return false;
 		}
 
-		account.credit(amount);
+		this.accounts[accountIndex].credit(amount);
 
 		return true;
 	}
@@ -130,14 +132,14 @@ public class AccountDatabase {
 			return -1;
 		}
 
-		if ( account.getBalance() < amount ) {
+		if ( this.accounts[accountIndex].getBalance() < amount ) {
 			return 1;
 		}
 
-		account.debit(amount);
+		this.accounts[accountIndex].debit(amount);
 
 		if ( account instanceof MoneyMarket ) {
-			MoneyMarket item = (MoneyMarket) account;
+			MoneyMarket item = (MoneyMarket) this.accounts[accountIndex];
 			item.setWithdrawals(item.getWithdrawals() + 1);
 		}
 
@@ -192,6 +194,10 @@ public class AccountDatabase {
 	 * Sorts by the date they were opened. Then prints the accounts statements
 	 */
 	public void printByDateOpen() {
+		if(size == 0) {
+			System.out.println("Database is empty.");
+			return;
+		}
 		sortByDateOpen();
 		System.out.print("--Printing statements by date opened--");
 		for (int i = 0; i < size; i++) {
@@ -213,7 +219,7 @@ public class AccountDatabase {
 
 				interest = "-interest: $ " + String.format("%.2f", item.monthlyInterest());
 				fee = "-fee: $ " + String.format("%.2f", item.monthlyFee());
-				accounts[i].debit(item.monthlyInterest() + item.monthlyFee());
+				accounts[i].debit(item.monthlyFee() - item.monthlyInterest());
 				new_balance = "-new balance: $ " + String.format("%.2f", accounts[i].getBalance());
 
 			}
@@ -228,7 +234,7 @@ public class AccountDatabase {
 
 				interest = "-interest: $ " + String.format("%.2f", item.monthlyInterest());
 				fee = "-fee: $ " + String.format("%.2f", item.monthlyFee());
-				accounts[i].debit(item.monthlyInterest() + item.monthlyFee());
+				accounts[i].debit(item.monthlyFee() - item.monthlyInterest());
 				new_balance = "-new balance: $ " + String.format("%.2f", accounts[i].getBalance());
 
 			}
@@ -243,7 +249,7 @@ public class AccountDatabase {
 
 				interest = "-interest: $ " + String.format("%.2f", item.monthlyInterest());
 				fee = "-fee: $ " + String.format("%.2f", item.monthlyFee());
-				accounts[i].credit(item.monthlyInterest());
+				accounts[i].debit(item.monthlyFee() - item.monthlyInterest());
 				new_balance = "-new balance: $ " + String.format("%.2f", accounts[i].getBalance());
 			}
 			System.out.println('\n');
@@ -260,6 +266,10 @@ public class AccountDatabase {
 	 * Prints accounts sorted by last name
 	 */
 	public void printByLastName() {
+		if(size == 0) {
+			System.out.println("Database is empty.");
+			return;
+		}
 		sortByLastName();
 		System.out.print("--Printing statements by last name--");
 		for (int i = 0; i < size; i++) {
@@ -281,7 +291,7 @@ public class AccountDatabase {
 
 				interest = "-interest: $ " + String.format("%.2f", item.monthlyInterest());
 				fee = "-fee: $ " + String.format("%.2f", item.monthlyFee());
-				accounts[i].debit(item.monthlyInterest() + item.monthlyFee());
+				accounts[i].debit(item.monthlyFee() - item.monthlyInterest());
 				new_balance = "-new balance: $ " + String.format("%.2f", accounts[i].getBalance());
 
 			}
@@ -296,7 +306,7 @@ public class AccountDatabase {
 
 				interest = "-interest: $ " + String.format("%.2f", item.monthlyInterest());
 				fee = "-fee: $ " + String.format("%.2f", item.monthlyFee());
-				accounts[i].debit(item.monthlyInterest() + item.monthlyFee());
+				accounts[i].debit(item.monthlyFee() - item.monthlyInterest());
 				new_balance = "-new balance: $ " + String.format("%.2f", accounts[i].getBalance());
 
 			}
@@ -311,7 +321,7 @@ public class AccountDatabase {
 
 				interest = "-interest: $ " + String.format("%.2f", item.monthlyInterest());
 				fee = "-fee: $ " + String.format("%.2f", item.monthlyFee());
-				accounts[i].credit(item.monthlyInterest());
+				accounts[i].debit(item.monthlyFee() - item.monthlyInterest());
 				new_balance = "-new balance: $ " + String.format("%.2f", accounts[i].getBalance());
 			}
 			System.out.println('\n');
@@ -328,6 +338,11 @@ public class AccountDatabase {
 	 * Prints all the accounts
 	 */
 	public void printAccounts() {
+		if(size == 0) {
+			System.out.print("Database is empty.");
+			return;
+		}
+		
 		System.out.println("--Listing accounts in the database--");
 		for (int i = 0; i < size; i++) {
 

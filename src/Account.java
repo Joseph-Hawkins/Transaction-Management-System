@@ -33,7 +33,7 @@ public abstract class Account {
 	 * @param amount amount the balance will be increased by
 	 */
 	public void credit(double amount) {
-		this.balance = this.balance + amount;
+		 this.balance = this.balance + amount;
 	}
 	
 	/**
@@ -72,11 +72,9 @@ public abstract class Account {
 	 * Setter method for balance
 	 * @param balance New balance for the account
 	 */
-	/*
-	public void setBalance(double balance) {
+	private void setBalance(double balance) {
 		this.balance = balance;
 	}
-	*/
 	
 	/**
 	 * Compares two accounts. 
@@ -87,9 +85,7 @@ public abstract class Account {
 		if (obj instanceof Account) {
 			Account item = (Account)obj; // Cast to account item
 
-			if ( (this.holder.equals(item.getHolder())) &&
-				 (this.balance == item.getBalance()) &&
-				 (this.dateOpen.equals(item.dateOpen)) ) {
+			if ((this.holder.equals(item.getHolder())) ) {
 				return true;
 			}
 		}
