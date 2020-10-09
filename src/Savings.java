@@ -18,7 +18,6 @@ public class Savings extends Account {
 		this.isLoyal = isLoyal;
 	}
 	
-	
 	/**
 	 * Returns the total monthly interest for the account
 	 * @return interest Monthly interest for an account.
@@ -33,7 +32,6 @@ public class Savings extends Account {
 		}
 		return monthly_interest_rate * getBalance();
 	}
-	
 	
 	/**
 	 * Returns the monthly fee for the account

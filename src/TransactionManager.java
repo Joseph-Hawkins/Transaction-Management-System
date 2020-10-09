@@ -9,14 +9,6 @@ import java.util.Scanner;
 public class TransactionManager {
 
 	/**
-	 * handle improper commands with try, catch blocks
-	 * case sensitive 2 letters
-	 * use InputMismatchException or NumberFormatException for improper data types
-	 * 
-	 *  What happens when improper input is used? do we prompt for a new valid input?
-	 */
-	
-	/**
 	 * Makes a specific account type based on the input type.	
 	 * @param details These details help construct an account.
 	 * @return account This is the account that was created by details given.
@@ -67,7 +59,9 @@ public class TransactionManager {
 	}
 	
 	/**
-	 * Creates a minimal account for withdrawing and depositing.
+	 * Creates a minimal account for withdrawing and depositing. 
+	 * Minimal account has name and type of account.
+	 * 
 	 * @param details string of the account details
 	 * @return acc minimal account encapsulating details. 
 	 */
@@ -128,8 +122,8 @@ public class TransactionManager {
 	}
 	
 	/**
-	 * Handles the print commands for account database.
-	 * @param command is the type of printing to occur.
+	 * Helper method to print account database.
+	 * @param command is the ordering for printing accounts.
 	 * @param accounts is the account database to print.
 	 */
 	private void printCommand(String command, AccountDatabase accounts) {

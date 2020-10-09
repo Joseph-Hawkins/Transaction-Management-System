@@ -48,6 +48,7 @@ public abstract class Account {
 		
 		return full_name + "* " + balance_to_string + "*" + date_to_string;  
 	}
+	
 	/**
 	 * Calculates the monthly interest of the account
 	 * @return interest monthly interest of an account
@@ -78,6 +79,7 @@ public abstract class Account {
 	
 	/**
 	 * Compares two accounts. 
+	 * @param obj Potential account to compare.
 	 * @return true if they are equal, false otherwise.
 	 */
 	@Override
@@ -110,25 +112,6 @@ public abstract class Account {
 	
 	public static void main (String[] args) {
 	
-		/*
-		 * 
-		 * 			if ( obj instanceof MoneyMarket ) {
-				MoneyMarket item = (MoneyMarket) obj;
-			}
-			
-			else if ( obj instanceof Checking ) {
-				Checking item = (Checking) obj;
-			}
-			
-			else if ( obj instanceof Savings ) {
-				Savings item = (Savings) obj;
-			}
-			else {
-				return false;
-			}
-				
-			
-		 */
 	
 	}
 }
