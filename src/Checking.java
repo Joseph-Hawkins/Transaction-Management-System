@@ -3,7 +3,7 @@
  * 
  * @author Joseph Hawkins, Gustavo Garcia
  *
- */
+ */ 
 public class Checking extends Account {
 	private boolean directDeposit;
 	

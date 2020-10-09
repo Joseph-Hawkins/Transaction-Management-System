@@ -22,7 +22,6 @@ public class Profile {
 	 * Getter method for first name
 	 * @return fname First name in string form.
 	 */
-	
 	public String getFname() {
 		return fname;
 	}
