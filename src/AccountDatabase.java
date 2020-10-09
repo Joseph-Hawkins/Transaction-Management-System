@@ -392,7 +392,7 @@ public class AccountDatabase {
 
 		MoneyMarket item0 = new MoneyMarket(john_cena,500.00,open_date);
 		Savings item1 = new Savings(john_cena,500.00,open_date,false);
-		Checking item = new Checking(john_cena,500.00,open_date,false);
+		//Checking item = new Checking(john_cena,500.00,open_date,false);
 
 		System.out.println(item0.equals(item1));
 
@@ -405,6 +405,8 @@ public class AccountDatabase {
 		//database.add(item3);
 
 		System.out.print(database.find(item));
+		
+		
 
         //database.printAccounts();
 	}
