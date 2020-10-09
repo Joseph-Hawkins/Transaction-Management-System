@@ -196,7 +196,7 @@ public class AccountDatabase {
 	 */
 	public void printByDateOpen() {
 		if(size == 0) {
-			System.out.println("Database is empty.");
+			System.out.print("Database is empty.");
 			return;
 		}
 		sortByDateOpen();
@@ -218,10 +218,10 @@ public class AccountDatabase {
 					header = header + "*" + Integer.toString(item.getWithdrawals()) + " withdrawals*";
 				}
 
-				interest = "-interest: $ " + String.format("%.2f", item.monthlyInterest());
-				fee = "-fee: $ " + String.format("%.2f", item.monthlyFee());
+				interest = "-interest: $ " + String.format("%,.2f", item.monthlyInterest());
+				fee = "-fee: $ " + String.format("%,.2f", item.monthlyFee());
 				accounts[i].debit(item.monthlyFee() - item.monthlyInterest());
-				new_balance = "-new balance: $ " + String.format("%.2f", accounts[i].getBalance());
+				new_balance = "-new balance: $ " + String.format("%,.2f", accounts[i].getBalance());
 
 			}
 
@@ -233,10 +233,10 @@ public class AccountDatabase {
 					header = header + "*direct deposit account*";
 				}
 
-				interest = "-interest: $ " + String.format("%.2f", item.monthlyInterest());
-				fee = "-fee: $ " + String.format("%.2f", item.monthlyFee());
+				interest = "-interest: $ " + String.format("%,.2f", item.monthlyInterest());
+				fee = "-fee: $ " + String.format("%,.2f", item.monthlyFee());
 				accounts[i].debit(item.monthlyFee() - item.monthlyInterest());
-				new_balance = "-new balance: $ " + String.format("%.2f", accounts[i].getBalance());
+				new_balance = "-new balance: $ " + String.format("%,.2f", accounts[i].getBalance());
 
 			}
 
@@ -248,10 +248,10 @@ public class AccountDatabase {
 					header = header + "*special Savings account*";
 				}
 
-				interest = "-interest: $ " + String.format("%.2f", item.monthlyInterest());
-				fee = "-fee: $ " + String.format("%.2f", item.monthlyFee());
+				interest = "-interest: $ " + String.format("%,.2f", item.monthlyInterest());
+				fee = "-fee: $ " + String.format("%,.2f", item.monthlyFee());
 				accounts[i].debit(item.monthlyFee() - item.monthlyInterest());
-				new_balance = "-new balance: $ " + String.format("%.2f", accounts[i].getBalance());
+				new_balance = "-new balance: $ " + String.format("%,.2f", accounts[i].getBalance());
 			}
 			System.out.println('\n');
 			System.out.println(header);
@@ -268,7 +268,7 @@ public class AccountDatabase {
 	 */
 	public void printByLastName() {
 		if(size == 0) {
-			System.out.println("Database is empty.");
+			System.out.print("Database is empty.");
 			return;
 		}
 		sortByLastName();
@@ -290,10 +290,10 @@ public class AccountDatabase {
 					header = header + "*" + Integer.toString(item.getWithdrawals()) + " withdrawals*";
 				}
 
-				interest = "-interest: $ " + String.format("%.2f", item.monthlyInterest());
-				fee = "-fee: $ " + String.format("%.2f", item.monthlyFee());
+				interest = "-interest: $ " + String.format("%,.2f", item.monthlyInterest());
+				fee = "-fee: $ " + String.format("%,.2f", item.monthlyFee());
 				accounts[i].debit(item.monthlyFee() - item.monthlyInterest());
-				new_balance = "-new balance: $ " + String.format("%.2f", accounts[i].getBalance());
+				new_balance = "-new balance: $ " + String.format("%,.2f", accounts[i].getBalance());
 
 			}
 
@@ -305,10 +305,10 @@ public class AccountDatabase {
 					header = header + "*direct deposit account*";
 				}
 
-				interest = "-interest: $ " + String.format("%.2f", item.monthlyInterest());
-				fee = "-fee: $ " + String.format("%.2f", item.monthlyFee());
+				interest = "-interest: $ " + String.format("%,.2f", item.monthlyInterest());
+				fee = "-fee: $ " + String.format("%,.2f", item.monthlyFee());
 				accounts[i].debit(item.monthlyFee() - item.monthlyInterest());
-				new_balance = "-new balance: $ " + String.format("%.2f", accounts[i].getBalance());
+				new_balance = "-new balance: $ " + String.format("%,.2f", accounts[i].getBalance());
 
 			}
 
@@ -320,10 +320,10 @@ public class AccountDatabase {
 					header = header + "*special Savings account*";
 				}
 
-				interest = "-interest: $ " + String.format("%.2f", item.monthlyInterest());
-				fee = "-fee: $ " + String.format("%.2f", item.monthlyFee());
+				interest = "-interest: $ " + String.format("%,.2f", item.monthlyInterest());
+				fee = "-fee: $ " + String.format("%,.2f", item.monthlyFee());
 				accounts[i].debit(item.monthlyFee() - item.monthlyInterest());
-				new_balance = "-new balance: $ " + String.format("%.2f", accounts[i].getBalance());
+				new_balance = "-new balance: $ " + String.format("%,.2f", accounts[i].getBalance());
 			}
 			System.out.println('\n');
 			System.out.println(header);
@@ -381,33 +381,5 @@ public class AccountDatabase {
 
 
 	public static void main (String[] args) {
-
-		Profile john_cena = new Profile("John","Cena");
-		Profile jeff_hardy = new Profile("John","Cena");
-		Profile randy_orton = new Profile("Randy","Orton");
-		Date open_date = new Date(2018,10,9);
-		Date open_date2 = new Date(2000,10,7);
-		Date open_date3 = new Date(2020,10,8);
-
-
-		MoneyMarket item0 = new MoneyMarket(john_cena,500.00,open_date);
-		Savings item1 = new Savings(john_cena,500.00,open_date,false);
-		//Checking item = new Checking(john_cena,500.00,open_date,false);
-
-		System.out.println(item0.equals(item1));
-
-
-	    Savings item2 = new Savings(jeff_hardy,200.00,open_date2,true);
-	    MoneyMarket item3 = new MoneyMarket(randy_orton,700.00,open_date3);
-		AccountDatabase database = new AccountDatabase();
-		database.add(item);
-		//database.add(item2);
-		//database.add(item3);
-
-		System.out.print(database.find(item));
-		
-		
-
-        //database.printAccounts();
 	}
 }
