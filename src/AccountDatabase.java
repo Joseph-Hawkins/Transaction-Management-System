@@ -27,7 +27,7 @@ public class AccountDatabase {
 		for(int i = 0; i < size; i++) {
 
 			if( accounts[i].equals(account) ) {
-
+				//THIS NEEDS TO BE REMOVED check 4:26 10/22 lecture
 				if ( (accounts[i] instanceof Checking) && (account instanceof Checking )) {
 					return i;
 				}
